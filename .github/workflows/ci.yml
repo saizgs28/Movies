@@ -21,3 +21,11 @@ jobs:
 
       - name: Compilar y empaquetar
         run: mvn clean package
+        
+      - name: Upload Artifact
+        uses: actions/update-artifact@v4 
+        if: failure()
+        with:
+            name: artefacto_pruebas
+            path: target/
+            
